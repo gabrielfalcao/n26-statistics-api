@@ -4,6 +4,3 @@ server:
 ---
 spring:
   profiles: default
-  security:
-    user:
-      password: weak
