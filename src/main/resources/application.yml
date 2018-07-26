@@ -1,0 +1,9 @@
+server:
+  port: 8000
+
+---
+spring:
+  profiles: default
+  security:
+    user:
+      password: weak

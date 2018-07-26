@@ -1,0 +1,22 @@
+#%RAML 1.0
+title: NewStore Customer API
+documentation:
+  - title: NewStore Customer API
+    content: !include ./README.md
+
+version: 1.0
+baseUri: http://localhost:8080/
+mediaType: application/json
+
+
+/statistics:
+  displayName: Statistics
+  get:
+    responses:
+      200:
+        description: Returns the statistics with constant execution time O(1)
+        body:
+          application/json:
+            type: !include responses/get_statistics.schema.json
+            examples:
+               get_statistics_response: !include responses/get_statistics.example.raml
