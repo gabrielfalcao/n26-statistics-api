@@ -7,3 +7,10 @@ unit:
 
 functional:
 	./gradlew test # TODO: run unit tests only
+
+run:
+	./gradlew bootRun
+
+idea:
+	./gradlew cleanIdea
+	./gradlew idea
