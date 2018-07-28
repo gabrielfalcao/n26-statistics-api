@@ -10,8 +10,7 @@ public class TransactionDomainConfiguration {
     }
 
     @Bean(name = "transactions")
-    public TransactionService createService() {
-        System.out.println("Creating transactionService");
+    public TransactionService transactionService() {
         return new TransactionService();
     }
 }

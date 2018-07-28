@@ -45,6 +45,7 @@ repositories {
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile("org.springframework.boot:spring-boot-starter-actuator")
+	compile("org.springframework.boot:spring-boot-starter-logging")
 	compile("com.fasterxml.jackson.core:jackson-databind:2.9.6")
 	compileOnly('org.projectlombok:lombok')
 

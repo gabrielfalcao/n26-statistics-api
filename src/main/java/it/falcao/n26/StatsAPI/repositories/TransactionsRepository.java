@@ -9,6 +9,7 @@ import java.util.Comparator;
 import java.util.List;
 
 import static it.falcao.n26.StatsAPI.models.Statistics.emptyStatistics;
+import static java.lang.Long.valueOf;
 import static java.util.Collections.synchronizedList;
 import static java.util.Comparator.comparing;
 
@@ -20,19 +21,20 @@ public class TransactionsRepository {
     public TransactionsRepository() {
         transactions = synchronizedList(new ArrayList());
         statistics = emptyStatistics();
-        youngestTimestamp = Long.valueOf(0);
+        youngestTimestamp = valueOf(0);
     }
 
     public void putTransaction(Transaction transaction) {
         synchronized (this) {
             youngestTimestamp = transaction.getTimestamp();
             transactions.add(transaction);
-            Collections.sort(transactions, transactionTimeComparator());
-            statistics.setMin(transactions.stream().mapToDouble(a -> a.getAmount()).min().orElse(transaction.getAmount()));
-            statistics.setSum(transactions.stream().mapToDouble(a -> a.getAmount()).sum());
-            statistics.setAvg(transactions.stream().mapToDouble(a -> a.getAmount()).average().orElse(transaction.getAmount()));
-            statistics.setMax(transactions.stream().mapToDouble(a -> a.getAmount()).max().orElse(transaction.getAmount()));
-            statistics.setCount(transactions.stream().count());
+
+            statistics = Statistics.builder()
+                .sum(transactions.stream().mapToDouble(Transaction::getAmount).sum())
+                .max(transactions.stream().mapToDouble(Transaction::getAmount).max().orElse(statistics.getMax()))
+                .min(transactions.stream().mapToDouble(Transaction::getAmount).min().orElse(statistics.getMin()))
+                .avg(transactions.stream().mapToDouble(Transaction::getAmount).average().orElse(statistics.getAvg()))
+                .count(valueOf(transactions.size())).build();
         }
     }
 

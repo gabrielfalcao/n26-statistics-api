@@ -1,7 +1,8 @@
-package it.falcao.n26.StatsAPI.repositories;
+package it.falcao.n26.StatsAPI.unit;
 
 import it.falcao.n26.StatsAPI.models.Statistics;
 import it.falcao.n26.StatsAPI.models.Transaction;
+import it.falcao.n26.StatsAPI.repositories.TransactionsRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -15,12 +16,12 @@ class TransactionsRepositoryTest {
     @BeforeEach
     void setup() {
         repository = new TransactionsRepository();
-        timestamp = Long.valueOf(1532738863);
+        timestamp = 1532738863L;
     }
     @Test
     void putTransactionShouldCalculateAverage() {
         // Given a single transaction
-        sendTransaction(Double.valueOf(100));
+        sendTransaction(100d);
         // When I get the statistics
         Statistics result = repository.getStatistics();
         // Then it should match the transaction
@@ -40,11 +41,12 @@ class TransactionsRepositoryTest {
     }
 
     void sendTransaction(Double amount) {
-        repository.putTransaction(Transaction.builder().timestamp(timestamp++).amount(amount).build());
+        timestamp += 30;
+        repository.putTransaction(Transaction.builder().timestamp(timestamp).amount(amount).build());
     }
     @Test
     void getStatisticsShouldReturnExpected() {
-        // Given 8 transactions of amount 100
+        // Given 7 transactions of amount 100
         sendTransaction(100d);
         sendTransaction(100d);
         sendTransaction(100d);
@@ -58,7 +60,7 @@ class TransactionsRepositoryTest {
         sendTransaction(50d);
 
         // And 1 transaction with amount 200
-        sendTransaction(Double.valueOf(200));
+        sendTransaction(200d);
 
         // When I get the statistics
         Statistics statistics = repository.getStatistics();

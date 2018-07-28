@@ -3,6 +3,8 @@ package it.falcao.n26.StatsAPI.controllers;
 import it.falcao.n26.StatsAPI.models.Statistics;
 import it.falcao.n26.StatsAPI.models.Transaction;
 import it.falcao.n26.StatsAPI.services.TransactionService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
@@ -22,15 +24,17 @@ public class TransactionsController {
 
     public  @Autowired
     @Qualifier("transactions") TransactionService engine;
-
+    Logger logger = LoggerFactory.getLogger(TransactionsController.class);
 
     @RequestMapping(value = "/transactions", method = RequestMethod.POST)
     @ResponseBody
     public ResponseEntity addTransaction(@RequestBody Transaction transaction) {
         synchronized (this) {
             if (engine.computeTransaction(transaction)) {
+                logger.info("Computed transaction: %s", transaction.toString());
                 return new ResponseEntity(HttpStatus.CREATED);
             } else {
+                logger.info("Rejected transaction: %s", transaction.toString());
                 return new ResponseEntity(HttpStatus.NO_CONTENT);
             }
         }
@@ -40,7 +44,9 @@ public class TransactionsController {
     @ResponseBody
     public Statistics getStatistics() {
         synchronized (this) {
-            return engine.getStatistics();
+            Statistics statistics = engine.getStatistics();
+            logger.info("Computed transaction: %s", statistics.toString());
+            return statistics;
         }
     }
 
@@ -52,6 +58,7 @@ public class TransactionsController {
         synchronized (this) {
             result.put("count", engine.flushMemory());
         }
+        logger.warn("Flushing database");
         return result;
     }
 }

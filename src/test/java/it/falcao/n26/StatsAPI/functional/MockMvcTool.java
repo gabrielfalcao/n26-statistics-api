@@ -1,4 +1,4 @@
-package it.falcao.n26.StatsAPI.controllers;
+package it.falcao.n26.StatsAPI.functional;
 
 
 import org.springframework.mock.web.MockHttpServletResponse;

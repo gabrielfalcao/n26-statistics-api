@@ -1,5 +1,8 @@
-package it.falcao.n26.StatsAPI.models;
+package it.falcao.n26.StatsAPI.unit;
 
+import it.falcao.n26.StatsAPI.models.Statistics;
+import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 
 import static it.falcao.n26.StatsAPI.models.Statistics.createStatisticsFromJson;
@@ -13,9 +16,9 @@ class StatisticsTest {
 
     @Test
     void emptyStatisticsShouldReturnZeroedValues() {
-        assertThat(
+        MatcherAssert.assertThat(
             emptyStatistics(),
-            is(
+            Matchers.is(
                 equalTo(
                     Statistics.builder()
                         .sum(0d)
