@@ -11,9 +11,9 @@ import lombok.*;
 public class Transaction {
     @Getter
     @Setter
-    private float amount;
+    private Double amount;
     @Getter
     @Setter
-    private int timestamp;
+    private Long timestamp;
 
 }

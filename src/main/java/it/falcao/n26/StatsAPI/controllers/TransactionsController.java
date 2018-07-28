@@ -17,24 +17,26 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class TransactionsController {
 
-    private @Autowired
-    @Qualifier("transactions")
-    TransactionService engine;
+    public  @Autowired
+    @Qualifier("transactions") TransactionService engine;
 
 
     @RequestMapping(value = "/transactions", method = RequestMethod.POST)
     @ResponseBody
     public ResponseEntity addTransaction(@RequestBody Transaction transaction) {
-        synchronized (engine) {
-            engine.computeTransaction(transaction);
+        synchronized (this) {
+            if (engine.computeTransaction(transaction)) {
+                return new ResponseEntity(HttpStatus.CREATED);
+            } else {
+                return new ResponseEntity(HttpStatus.NO_CONTENT);
+            }
         }
-        return new ResponseEntity(HttpStatus.OK);
     }
 
     @RequestMapping(value = "/statistics", method = RequestMethod.GET)
     @ResponseBody
     public Statistics getStatistics() {
-        synchronized (engine) {
+        synchronized (this) {
             return engine.getStatistics();
         }
     }

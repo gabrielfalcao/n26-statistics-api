@@ -9,19 +9,19 @@ import lombok.*;
 public class Statistics {
     @Getter
     @Setter
-    private int sum;
+    private Double sum;
     @Getter
     @Setter
-    private int avg;
+    private Double avg;
     @Getter
     @Setter
-    private int max;
+    private Double max;
     @Getter
     @Setter
-    private int min;
+    private Double min;
     @Getter
     @Setter
-    private int count;
+    private Long count;
 
     public static Statistics emptyStatistics() {
         return Statistics.builder().build();
