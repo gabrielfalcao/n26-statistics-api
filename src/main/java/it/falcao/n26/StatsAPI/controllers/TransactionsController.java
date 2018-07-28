@@ -22,8 +22,9 @@ import java.util.Map;
 @Controller
 public class TransactionsController {
 
-    public  @Autowired
-    @Qualifier("transactions") TransactionService engine;
+    public @Autowired
+    @Qualifier("transactions")
+    TransactionService engine;
     Logger logger = LoggerFactory.getLogger(TransactionsController.class);
 
     @RequestMapping(value = "/transactions", method = RequestMethod.POST)

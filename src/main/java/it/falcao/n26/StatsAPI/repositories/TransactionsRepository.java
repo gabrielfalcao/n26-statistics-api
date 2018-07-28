@@ -4,7 +4,6 @@ import it.falcao.n26.StatsAPI.models.Statistics;
 import it.falcao.n26.StatsAPI.models.Transaction;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -30,11 +29,11 @@ public class TransactionsRepository {
             transactions.add(transaction);
 
             statistics = Statistics.builder()
-                .sum(transactions.stream().mapToDouble(Transaction::getAmount).sum())
-                .max(transactions.stream().mapToDouble(Transaction::getAmount).max().orElse(statistics.getMax()))
-                .min(transactions.stream().mapToDouble(Transaction::getAmount).min().orElse(statistics.getMin()))
-                .avg(transactions.stream().mapToDouble(Transaction::getAmount).average().orElse(statistics.getAvg()))
-                .count(valueOf(transactions.size())).build();
+                    .sum(transactions.stream().mapToDouble(Transaction::getAmount).sum())
+                    .max(transactions.stream().mapToDouble(Transaction::getAmount).max().orElse(statistics.getMax()))
+                    .min(transactions.stream().mapToDouble(Transaction::getAmount).min().orElse(statistics.getMin()))
+                    .avg(transactions.stream().mapToDouble(Transaction::getAmount).average().orElse(statistics.getAvg()))
+                    .count(valueOf(transactions.size())).build();
         }
     }
 

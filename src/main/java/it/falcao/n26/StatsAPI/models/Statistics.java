@@ -2,12 +2,9 @@ package it.falcao.n26.StatsAPI.models;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
 import lombok.*;
 
 import java.io.StringWriter;
-import java.util.HashMap;
-import java.util.Map;
 
 @Data
 @AllArgsConstructor
@@ -34,21 +31,22 @@ public class Statistics {
         return Statistics.builder().sum(0d).avg(0d).max(0d).min(0d).count(0L).build();
     }
 
-    public Statistics copy() {
-        return this.toBuilder().build();
-    }
-
-    public static Statistics createStatisticsFromJson(String raw) throws Exception{
+    public static Statistics createStatisticsFromJson(String raw) throws Exception {
         Statistics data;
         ObjectMapper objectMapper = new ObjectMapper();
         data = objectMapper.readValue(raw, Statistics.class);
         return data;
     }
 
+    public Statistics copy() {
+        return this.toBuilder().build();
+    }
+
     @Override
     public String toString() {
         ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
+        // uncomment for pretty json output (useful while debugging tests)
+        // objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
 
         StringWriter writer = new StringWriter();
         try {
@@ -61,11 +59,11 @@ public class Statistics {
 
     public String toRepr() {
         return "Statistics(" +
-                    "sum=" + getSum().toString() +
-                    ", avg=" + getAvg().toString() +
-                    ", max=" + getMax().toString() +
-                    ", min=" + getMin().toString() +
-                    ", count=" + getCount().toString() +
-                    ")";
+                "sum=" + getSum().toString() +
+                ", avg=" + getAvg().toString() +
+                ", max=" + getMax().toString() +
+                ", min=" + getMin().toString() +
+                ", count=" + getCount().toString() +
+                ")";
     }
 }

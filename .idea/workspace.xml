@@ -2,21 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1b8202d7-76f2-47fe-a5ee-343557c1e381" name="Default" comment="p">
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/falcao/n26/StatsAPI/config/WebConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/log4j2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/it/falcao/n26/StatsAPI/functional/TestWebApi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/falcao/n26/StatsAPI/config/TransactionDomainConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/falcao/n26/StatsAPI/config/TransactionDomainConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/falcao/n26/StatsAPI/controllers/TransactionsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/falcao/n26/StatsAPI/controllers/TransactionsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/falcao/n26/StatsAPI/repositories/TransactionsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/falcao/n26/StatsAPI/repositories/TransactionsRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/it/falcao/n26/StatsAPI/controllers/MockMvcTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/falcao/n26/StatsAPI/functional/MockMvcTool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/it/falcao/n26/StatsAPI/controllers/TestTransactionsController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/it/falcao/n26/StatsAPI/models/StatisticsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/falcao/n26/StatsAPI/unit/StatisticsTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/it/falcao/n26/StatsAPI/repositories/TransactionsRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/falcao/n26/StatsAPI/unit/TransactionsRepositoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/it/falcao/n26/StatsAPI/services/TransactionServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/falcao/n26/StatsAPI/unit/TransactionServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/falcao/n26/StatsAPI/models/Statistics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/falcao/n26/StatsAPI/models/Statistics.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/falcao/n26/StatsAPI/functional/MockMvcTool.java" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -54,10 +41,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="TestWebApi.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TestWebApi.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/it/falcao/n26/StatsAPI/functional/TestWebApi.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="393">
+            <state relative-caret-position="-446">
               <caret line="102" column="9" lean-forward="true" selection-start-line="102" selection-start-column="9" selection-end-line="102" selection-end-column="9" />
               <folding>
                 <element signature="e#4156#4157#0" expanded="true" />
@@ -72,6 +59,18 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="374">
               <caret line="36" selection-start-line="36" selection-end-line="36" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Statistics.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/it/falcao/n26/StatsAPI/models/Statistics.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="319">
+              <caret line="51" column="11" selection-start-line="51" selection-start-column="11" selection-end-line="51" selection-end-column="11" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -116,7 +115,7 @@
       <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
+            <state relative-caret-position="-431">
               <caret line="47" column="65" selection-start-line="47" selection-start-column="65" selection-end-line="47" selection-end-column="65" />
             </state>
           </provider>
@@ -494,7 +493,6 @@
         <option value="$PROJECT_DIR$/src/main/java/it/falcao/n26/StatsAPI/models/Transaction.java" />
         <option value="$PROJECT_DIR$/src/test/java/it/falcao/n26/StatsAPI/repositories/TransactionsRepositoryTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/it/falcao/n26/StatsAPI/services/TransactionService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/it/falcao/n26/StatsAPI/models/Statistics.java" />
         <option value="$PROJECT_DIR$/src/test/java/it/falcao/n26/StatsAPI/models/StatisticsTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/it/falcao/n26/StatsAPI/controllers/MockMvcTool.java" />
         <option value="$PROJECT_DIR$/src/test/java/it/falcao/n26/StatsAPI/unit/TransactionServiceTest.java" />
@@ -508,6 +506,8 @@
         <option value="$PROJECT_DIR$/src/main/java/it/falcao/n26/StatsAPI/config/TransactionDomainConfiguration.java" />
         <option value="$PROJECT_DIR$/src/main/java/it/falcao/n26/StatsAPI/repositories/TransactionsRepository.java" />
         <option value="$PROJECT_DIR$/src/test/java/it/falcao/n26/StatsAPI/functional/TestWebApi.java" />
+        <option value="$PROJECT_DIR$/src/test/java/it/falcao/n26/StatsAPI/functional/MockMvcTool.java" />
+        <option value="$PROJECT_DIR$/src/main/java/it/falcao/n26/StatsAPI/models/Statistics.java" />
       </list>
     </option>
   </component>
@@ -831,7 +831,20 @@
         </option>
         <option name="vmOptions" value="" />
       </ExternalSystemSettings>
-      <extension name="coverage" track_test_folders="true" />
+      <extension name="coverage" track_test_folders="true" runner="jacoco">
+        <pattern>
+          <option name="PATTERN" value="it.falcao.n26.StatsAPI.controllers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+        <pattern>
+          <option name="PATTERN" value="it.falcao.n26.StatsAPI.repositories.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+        <pattern>
+          <option name="PATTERN" value="it.falcao.n26.StatsAPI.services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
     </configuration>
     <configuration name="Unit Tests" type="JUnit" factoryName="JUnit">
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -922,9 +935,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="TestWebApi_shouldGetStatistics - 2018.07.28 at 23h 09m 08s.xml">
-      <configuration name="TestWebApi.shouldGetStatistics" configurationId="GradleRunConfiguration" />
-    </history-entry>
     <history-entry file="TestWebApi_shouldGetStatistics - 2018.07.28 at 23h 10m 06s.xml">
       <configuration name="TestWebApi.shouldGetStatistics" configurationId="GradleRunConfiguration" />
     </history-entry>
@@ -952,6 +962,9 @@
     <history-entry file="test - 2018.07.28 at 23h 16m 26s.xml">
       <configuration name="test" configurationId="GradleRunConfiguration" />
     </history-entry>
+    <history-entry file="test - 2018.07.28 at 23h 24m 47s.xml">
+      <configuration name="test" configurationId="GradleRunConfiguration" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="2560" height="1418" extended-state="6" />
@@ -964,13 +977,13 @@
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="7" />
-      <window_info active="true" anchor="bottom" id="Run" order="3" visible="true" weight="0.6160714" />
+      <window_info anchor="bottom" id="Run" order="3" visible="true" weight="0.6160714" />
       <window_info anchor="bottom" id="Version Control" order="10" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info id="Capture Tool" order="6" />
       <window_info id="Designer" order="3" />
       <window_info anchor="bottom" id="Problems" order="11" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info anchor="bottom" id="VersionChecker" order="0" />
       <window_info anchor="bottom" id="Build" order="11" weight="0.3296131" />
       <window_info anchor="bottom" id="Find" order="2" weight="0.3296131" />
@@ -1238,16 +1251,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/it/falcao/n26/StatsAPI/models/Statistics.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="677">
-          <caret line="60" lean-forward="true" selection-start-line="59" selection-start-column="5" selection-end-line="60" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-test/2.1.0.BUILD-SNAPSHOT/1fe4607af40743f22bd96ffd7edf1387d9575da7/spring-boot-test-2.1.0.BUILD-SNAPSHOT-sources.jar!/org/springframework/boot/test/web/client/TestRestTemplate.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="292">
@@ -1286,16 +1289,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/it/falcao/n26/StatsAPI/functional/MockMvcTool.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/it/falcao/n26/StatsAPI/services/TransactionService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="465">
@@ -1325,13 +1318,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="8" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="47" column="65" selection-start-line="47" selection-start-column="65" selection-end-line="47" selection-end-column="65" />
         </state>
       </provider>
     </entry>
@@ -1369,13 +1355,40 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/it/falcao/n26/StatsAPI/functional/MockMvcTool.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="12" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="12" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/it/falcao/n26/StatsAPI/functional/TestWebApi.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="393">
+        <state relative-caret-position="-446">
           <caret line="102" column="9" lean-forward="true" selection-start-line="102" selection-start-column="9" selection-end-line="102" selection-end-column="9" />
           <folding>
             <element signature="e#4156#4157#0" expanded="true" />
             <element signature="e#4205#4206#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-431">
+          <caret line="47" column="65" selection-start-line="47" selection-start-column="65" selection-end-line="47" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/it/falcao/n26/StatsAPI/models/Statistics.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="51" column="11" selection-start-line="51" selection-start-column="11" selection-end-line="51" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

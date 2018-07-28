@@ -13,11 +13,13 @@ import static org.hamcrest.Matchers.is;
 class TransactionsRepositoryTest {
     private TransactionsRepository repository;
     private Long timestamp;
+
     @BeforeEach
     void setup() {
         repository = new TransactionsRepository();
         timestamp = 1532738863L;
     }
+
     @Test
     void putTransactionShouldCalculateAverage() {
         // Given a single transaction
@@ -44,6 +46,7 @@ class TransactionsRepositoryTest {
         timestamp += 30;
         repository.putTransaction(Transaction.builder().timestamp(timestamp).amount(amount).build());
     }
+
     @Test
     void getStatisticsShouldReturnExpected() {
         // Given 7 transactions of amount 100
@@ -67,17 +70,17 @@ class TransactionsRepositoryTest {
 
         // Then they should match my expectation
         assertThat(
-            statistics,
-            is(equalTo(
-                Statistics.builder()
-                    .sum(1000d)
-                    .avg(100d)
-                    .max(200d)
-                    .min(50d)
-                    .count(10L)
-                    .build()
+                statistics,
+                is(equalTo(
+                        Statistics.builder()
+                                .sum(1000d)
+                                .avg(100d)
+                                .max(200d)
+                                .min(50d)
+                                .count(10L)
+                                .build()
+                        )
                 )
-            )
         );
     }
 }

@@ -14,13 +14,9 @@ import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.*;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.security.Timestamp;
-
 import static java.lang.System.currentTimeMillis;
 import static java.lang.Thread.sleep;
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.nullValue;
+import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 
@@ -40,6 +36,7 @@ public class TestWebApi {
         this.headers = new HttpHeaders();
         this.headers.add("Content-Type", "application/json");
     }
+
     private String createURLWithPort(String uri) {
         return "http://localhost:" + port + uri;
     }
@@ -79,10 +76,10 @@ public class TestWebApi {
         // Send a HTTP POST
         HttpEntity<Transaction> entity = new HttpEntity<>(transaction, headers);
         ResponseEntity<String> response = restTemplate.exchange(
-            createURLWithPort("/transactions"),
-            HttpMethod.POST,
-            entity,
-            String.class
+                createURLWithPort("/transactions"),
+                HttpMethod.POST,
+                entity,
+                String.class
         );
 
         try {
@@ -96,10 +93,10 @@ public class TestWebApi {
 
     public Boolean resetStatistics() {
         return restTemplate.exchange(
-            createURLWithPort("/transactions"),
-            HttpMethod.DELETE,
-            new HttpEntity<String>(null, headers),
-            String.class
+                createURLWithPort("/transactions"),
+                HttpMethod.DELETE,
+                new HttpEntity<String>(null, headers),
+                String.class
         ).getStatusCode() == HttpStatus.OK;
     }
 
@@ -137,17 +134,17 @@ public class TestWebApi {
 
         // Then it matches my expectations
         assertThat(
-            result,
-            Matchers.is(Matchers.equalTo(
-                Statistics.builder()
-                    .sum(1000d)
-                    .avg(100d)
-                    .max(200d)
-                    .min(50d)
-                    .count(10L)
-                    .build()
+                result,
+                Matchers.is(Matchers.equalTo(
+                        Statistics.builder()
+                                .sum(1000d)
+                                .avg(100d)
+                                .max(200d)
+                                .min(50d)
+                                .count(10L)
+                                .build()
+                        )
                 )
-            )
         );
     }
 
