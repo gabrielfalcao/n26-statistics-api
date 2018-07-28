@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.HashMap;
+import java.util.Map;
+
 
 @Controller
 public class TransactionsController {
@@ -39,5 +42,16 @@ public class TransactionsController {
         synchronized (this) {
             return engine.getStatistics();
         }
+    }
+
+    @RequestMapping(value = "/statistics", method = RequestMethod.DELETE)
+    @ResponseBody
+    public Map<String, Long> resetStatistics() {
+        HashMap<String, Long> result = new HashMap<>();
+
+        synchronized (this) {
+            result.put("count", engine.flushMemory());
+        }
+        return result;
     }
 }

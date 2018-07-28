@@ -51,4 +51,13 @@ public class TransactionsRepository {
             return youngestTimestamp;
         }
     }
+
+    public Long flush() {
+        synchronized (this) {
+            Long count = transactions.stream().count();
+            transactions.clear();
+            statistics = emptyStatistics();
+            return count;
+        }
+    }
 }

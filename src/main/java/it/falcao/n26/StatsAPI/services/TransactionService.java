@@ -39,4 +39,8 @@ public class TransactionService {
             return repository.getStatistics();
         }
     }
+
+    public Long flushMemory() {
+        return repository.flush();
+    }
 }
