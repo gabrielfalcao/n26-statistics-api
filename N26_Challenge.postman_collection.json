@@ -6,7 +6,103 @@
 	},
 	"item": [
 		{
-			"name": "add_transaction",
+			"name": "reset_statistics",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6ed7ea75-55de-4a8e-b466-9f0ac5cea680",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "5969fcbc-c8df-4baf-a332-1dfcb2e3f0a3",
+						"type": "text/javascript",
+						"exec": [
+							"pm.environment.set(\"n26_transaction_amount\", 100);",
+							"pm.environment.set(\"n26_transaction_count\", 0);"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"amount\": {{n26_transaction_amount}},\n\t\"timestamp\": {{n26_transaction_timestamp}}\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/statistics",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"statistics"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post_transactions",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a9f97535-2f13-45aa-a219-769a1ee0e37f",
+						"type": "text/javascript",
+						"exec": [
+							"var _ = require('lodash')",
+							"",
+							"",
+							"const DESIRED_TRANSACTION_COUNT = 10;",
+							"var transaction_count = parseInt(pm.environment.get(\"n26_transaction_count\") || 0, 10) + 1;",
+							"pm.environment.set(\"n26_transaction_count\", transaction_count);",
+							"",
+							"if (transaction_count === 7) {",
+							"",
+							"    pm.environment.set(\"n26_transaction_amount\", 50);",
+							"} else if  (transaction_count === 9) {",
+							"    pm.environment.set(\"n26_transaction_amount\", 200);",
+							"}",
+							"",
+							"var amount = parseFloat(pm.environment.get(\"n26_transaction_amount\") || 100);",
+							"",
+							"tests[\"transaction count: \" + transaction_count] = true;",
+							"tests[\"transaction amount: \" + amount] = true;",
+							"",
+							"if (transaction_count < DESIRED_TRANSACTION_COUNT) {",
+							"        postman.setNextRequest(\"post_transactions\");",
+							"} else {",
+							"        postman.setNextRequest(\"get_statistics\");",
+							"}"
+						]
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "bdad3617-4176-4775-a37b-8b9aa721465b",
+						"type": "text/javascript",
+						"exec": [
+							"pm.environment.set(\"n26_transaction_timestamp\", (new Date()).getTime());"
+						]
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [
@@ -17,7 +113,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"amount\": 100,\n\t\"timestamp\": 1532742127\n}"
+					"raw": "{\n\t\"amount\": {{n26_transaction_amount}},\n\t\"timestamp\": {{n26_transaction_timestamp}}\n}"
 				},
 				"url": {
 					"raw": "http://localhost:8000/transactions",
@@ -35,15 +131,64 @@
 		},
 		{
 			"name": "get_statistics",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "23c8daa6-86cd-4463-aff9-f6f4cf3231e9",
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"tests[\"(expects 1000) - sum = \" + jsonData[\"sum\"]] = jsonData[\"sum\"] === 1000;",
+							"tests[\"(expects 200) - max = \" + jsonData[\"max\"]] = jsonData[\"max\"] === 200;",
+							"tests[\"(expects 50) - min = \" + jsonData[\"min\"]] = jsonData[\"min\"] === 50;",
+							"tests[\"(expects 100) - avg = \" + jsonData[\"avg\"]] = jsonData[\"avg\"] === 100;",
+							"tests[\"(expects 10) - count = \" + jsonData[\"count\"]] = jsonData[\"count\"] === 10;",
+							""
+						]
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": ""
+					"raw": "http://localhost:8000/statistics",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"statistics"
+					]
 				}
 			},
 			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "c31084d0-8184-4797-8b7a-d86f1e419d94",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "9e9d5e71-a4e6-4a33-93cb-e46cda50355f",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
 		}
 	]
 }

@@ -1,11 +1,11 @@
 server:
   port: 8000
+  contextPath: /
 
 logging:
   level:
-    org.springframework.web: DEBUG
-    org.hibernate: ERROR
+    it.falcao.n26: INFO
+    org.springframework.web: ERROR
 
----
 spring:
   profiles: default

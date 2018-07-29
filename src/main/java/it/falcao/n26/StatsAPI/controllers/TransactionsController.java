@@ -9,17 +9,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
 
+import static java.lang.String.format;
 
-@Controller
+
+@RestController
 public class TransactionsController {
 
     public @Autowired
@@ -32,10 +30,10 @@ public class TransactionsController {
     public ResponseEntity addTransaction(@RequestBody Transaction transaction) {
         synchronized (this) {
             if (engine.computeTransaction(transaction)) {
-                logger.info("Computed transaction: %s", transaction.toString());
+                logger.info(format("Computed transaction: %s", transaction.toString()));
                 return new ResponseEntity(HttpStatus.CREATED);
             } else {
-                logger.info("Rejected transaction: %s", transaction.toString());
+                logger.info(format("Rejected transaction: %s", transaction.toString()));
                 return new ResponseEntity(HttpStatus.NO_CONTENT);
             }
         }

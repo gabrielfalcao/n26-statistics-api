@@ -12,9 +12,8 @@
         </Console>
     </Appenders>
     <Loggers>
-        <Logger name="org.hibernate.validator.internal.util.Version" level="warn"/>
-        <Logger name="org.apache.coyote.http11.Http11NioProtocol" level="warn"/>
-        <Logger name="org.apache.tomcat.util.net.NioSelectorPool" level="warn"/>
+        <Logger name="it.falcao.n26" level="debug"/>
+        <Logger name="org.springframework" level="error"/>
 
         <Root level="info">
             <AppenderRef ref="Console"/>
