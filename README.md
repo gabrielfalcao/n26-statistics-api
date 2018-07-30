@@ -7,7 +7,7 @@
 - Java 8
 - gradle
 
-**Helpful Links:** 
+**Helpful Links:**
 
 - [IntelliJ: Selecting the JDK version](https://intellij-support.jetbrains.com/hc/en-us/articles/206544879-Selecting-the-JDK-version-the-IDE-will-run-under)
 - [SDKMAN! - SDK Version Manager](https://sdkman.io/usage#installspecific)
@@ -23,12 +23,22 @@
 
 ## Running Tests
 
-from command line:
+### Unit Tests
+
+- No I/O involved
 
 ```bash
-./gradlew test
+./gradlew test --tests it.falcao.n26.StatsAPI.unit.*
 ```
 
+
+### Functional Tests
+
+- API Endpoints tested with a real server instance
+
+```bash
+./gradlew test --tests it.falcao.n26.StatsAPI.functional.*
+```
 
 ## Running Server
 
@@ -40,3 +50,16 @@ from command line:
 
 
 Default host: [http://localhost:8000/](http://localhost:8000/)
+
+
+## Configure IntelliJ
+
+```bash
+./gradlew cleanIdea idea
+```
+
+## Tools
+
+- [N26_Challenge.postman_collection.json](N26_Challenge.postman_collection.json) contains
+  a javascript-based test that automatically sends 10 transactoins, 7
+  with amount 100, 2 with 50 and 1 with 200.
